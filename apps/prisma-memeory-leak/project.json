@@ -1,0 +1,57 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/prisma-memeory-leak/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/prisma-memeory-leak",
+        "main": "apps/prisma-memeory-leak/src/main.ts",
+        "tsConfig": "apps/prisma-memeory-leak/tsconfig.app.json",
+        "assets": ["apps/prisma-memeory-leak/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/prisma-memeory-leak/src/environments/environment.ts",
+              "with": "apps/prisma-memeory-leak/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "prisma-memeory-leak:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "prisma-memeory-leak:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/prisma-memeory-leak/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/prisma-memeory-leak"],
+      "options": {
+        "jestConfig": "apps/prisma-memeory-leak/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
