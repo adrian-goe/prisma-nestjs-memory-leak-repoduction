@@ -15,6 +15,9 @@ describe('AppPrismaController', () => {
     }).compile();
   });
 
+  afterAll(async () => {
+    await app.close()
+  })
   describe('getData', () => {
     it('should return "Welcome to prisma-memeory-leak!"', async () => {
       const appController = app.get<AppPrismaController>(AppPrismaController);

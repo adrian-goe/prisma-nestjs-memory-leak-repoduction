@@ -13,6 +13,10 @@ describe('AppController', () => {
     }).compile();
   });
 
+  afterAll(async () => {
+    await app.close()
+  })
+
   describe('getData', () => {
     it('should return "Welcome to prisma-memeory-leak!"', () => {
       const appController = app.get<AppController>(AppController);

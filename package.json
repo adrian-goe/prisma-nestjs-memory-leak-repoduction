@@ -5,8 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test:proof": "node --expose-gc ./node_modules/.bin/jest --config=apps/prisma-memeory-leak/jest.config.ts --verbose --detectLeaks --runTestsByPath ./apps/prisma-memeory-leak/src/app/app.controller.spec.ts",
-    "test:leak": "node --expose-gc ./node_modules/.bin/jest --config=apps/prisma-memeory-leak/jest.config.ts --verbose --detectLeaks --runTestsByPath ./apps/prisma-memeory-leak/src/app/app-prisma.controller.spec.ts"
+    "test:proof": "node --expose-gc ./node_modules/.bin/jest --config=apps/prisma-memeory-leak/jest.config.ts --verbose --no-compilation-cache --detectLeaks --runTestsByPath ./apps/prisma-memeory-leak/src/app/app.controller.spec.ts",
+    "test:leak": "node --expose-gc ./node_modules/.bin/jest --config=apps/prisma-memeory-leak/jest.config.ts --verbose --no-compilation-cache --detectLeaks --runTestsByPath ./apps/prisma-memeory-leak/src/app/app-prisma.controller.spec.ts"
   },
   "private": true,
   "dependencies": {
