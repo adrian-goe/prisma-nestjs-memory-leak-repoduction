@@ -6,8 +6,8 @@ npm ci
 
 docker-compose up -d
 
-prisma migrate dev
-prisma generate
+npx prisma migrate dev
+npx prisma generate
 
 # Run test without prisma -> no leak
 npm run test:proof
