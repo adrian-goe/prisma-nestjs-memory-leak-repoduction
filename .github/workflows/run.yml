@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - run: node --version
       - run: docker compose up -d
       - run: npx prisma migrate dev
       - run: npx prisma generate
